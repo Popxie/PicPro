@@ -1,31 +1,26 @@
 <template>
   <div id="app">
-    <div class="main-cont">
-      <div class="test">3333</div>
-    </div>
+    <Main />
   </div>
 </template>
-
 <script>
+import Main from './components/Main';
 
 export default {
   name: 'App',
+  components: {
+    Main
+  },
 }
 </script>
 
-<style>
+<style lang="scss">
 * {
   margin: 0;
 }
-.main-cont {
-  margin: 0 auto;
-  width: 1080px;
-  height: 1920px;
-  border: 1px solid;
+body,
+#app {
+  background: #000000;
 }
-.test {
-  width: 100%;
-  height: 40px;
-  border: 1px solid red;
-}
+
 </style>
