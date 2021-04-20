@@ -69,7 +69,7 @@
 
     function refreshRem(){
         var width = docEl.getBoundingClientRect().width;
-        // console.log('实际width: ', width)
+        console.log('实际width: ', width)
         if (width / dpr > 1080) {
           width = 1080 * dpr;
         }

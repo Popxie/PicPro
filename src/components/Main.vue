@@ -3,7 +3,8 @@
     <el-dialog
       :visible.sync="dialogVisible"
       :modal-append-to-body="false"
-      :show-close="false">
+      :show-close="false"
+      top="30vh">
       <img class="dialog-img-style" :src="dialogImg" alt="">
     </el-dialog>
     <img class="logo-style" src="../assets/img/logo.png" alt="">
@@ -92,7 +93,7 @@ export default {
   margin: 0 auto;
   width: 1080px;
   height: 1920px;
-  background: rgba(173, 216, 230, 0.13);
+  // background: rgba(173, 216, 230, 0.13);
   position: relative;
   .dialog-img-style {
     width: 1080px;
