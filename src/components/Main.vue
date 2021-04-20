@@ -93,7 +93,7 @@ export default {
   margin: 0 auto;
   width: 1080px;
   height: 1920px;
-  // background: rgba(173, 216, 230, 0.13);
+  background: rgba(173, 216, 230, 0.13);
   position: relative;
   .dialog-img-style {
     width: 1080px;
@@ -144,10 +144,28 @@ export default {
     }
   }
 }
-.el-dialog {
+// .el-dialog {
+//   width: 1080px;
+//   height: 700px;
+//   background: none;
+//   box-shadow: none;
+// }
+
+// dialog垂直水平居中
+.el-dialog{
   width: 1080px;
   height: 700px;
   background: none;
   box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  margin:0 !important;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+.el-dialog .el-dialog__body{
+  flex:1;
 }
 </style>

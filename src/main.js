@@ -7,7 +7,7 @@ import App from './App.vue'
 Vue.use(Dialog)
 Vue.use(Button)
 
-import '@/assets/js/flexible.js'
+// import '@/assets/js/flexible.js'
 
 Vue.config.productionTip = false
 
