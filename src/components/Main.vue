@@ -3,8 +3,7 @@
     <el-dialog
       :visible.sync="dialogVisible"
       :modal-append-to-body="false"
-      :show-close="false"
-      top="30vh">
+      :show-close="false">
       <img class="dialog-img-style" :src="dialogImg" alt="">
     </el-dialog>
     <img class="logo-style" src="../assets/img/logo.png" alt="">
@@ -160,6 +159,7 @@ export default {
   display: flex;
   flex-direction: column;
   margin:0 !important;
+  padding: 0;
   position:absolute;
   top:50%;
   left:50%;
@@ -167,5 +167,6 @@ export default {
 }
 .el-dialog .el-dialog__body{
   flex:1;
+  padding: 0;
 }
 </style>
