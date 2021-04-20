@@ -15,7 +15,8 @@ module.exports = {
              * 例如/(node_module)\/如果想把前端UI框架内的px也转换成rem，
              * 请把此属性设为默认值
              */
-            exclude: /(node_module)/,
+            // exclude: /(node_module)/,
+            exclude: false,
             //（布尔值）允许在媒体查询中转换px。
             mediaQuery: false,
           }),
