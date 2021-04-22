@@ -1,6 +1,8 @@
 <template>
-  <div class="main-cont">
+  <div class="main-cont" id="main" @dblclick.prevent="dbClick">
     <el-dialog
+      :close-on-press-escape="false"
+      :close-on-click-modal="false"
       :visible.sync="dialogVisible"
       :modal-append-to-body="false"
       :show-close="false"
@@ -11,6 +13,11 @@
     <img class="logo-style" src="../assets/img/logo.png">
     <div class="module-cont">
       <div class="left-cont">
+        <div 
+          v-for="(iconItem, index) in 13" 
+          :class="`icon_${index+1} icon`"
+          :key="index" 
+          @click="menuItemClick(index + 1)"></div>
         <img class="pic-style" :src="choosePic()">
       </div>
       <div class="right-cont">
@@ -31,7 +38,9 @@
 </template>
 
 <script>
-import { menuList, dialogList } from './dataList';
+import screenfull from 'screenfull'
+import { menuList, dialogList } from './dataList'
+
 export default {
   data() {
     return {
@@ -42,13 +51,25 @@ export default {
       dialogImg: ''
     }
   },
+  mounted() {
+    // 双击全屏的时候 log会默认被选中
+    const main = document.getElementById("main")
+    main.onselectstart = function(ev) {
+      const e = ev || window.event;
+      e.preventDefault();
+    }
+  },
   methods: {
+    async dbClick() {
+      if (!screenfull.isEnabled) return alert('你当前的浏览器不支持全屏预览！')
+      await screenfull.toggle()
+    },
     dialogClose() {
       this.menuId = -1
       this.dialogVisible = false
     },
     menuItemClick(menuId) {
-      if (menuId === 14) return
+      if (menuId === 14 || menuId > 3) return
       this.menuId = menuId
       this.dialogList.forEach(item => {
         if (item.id === menuId) {
@@ -101,8 +122,8 @@ $width: 1080px;
   margin: 0 auto;
   width: 1080px;
   height: 1920px;
-  // background: rgba(173, 216, 230, 0.13);
   position: relative;
+  -webkit-tap-highlight-color: transparent; // 移动端点击会有选中状态一闪而过
   .dialog-img-style {
     width: $width;
   }
@@ -111,7 +132,7 @@ $width: 1080px;
     top: 105px;
     left: 115px;
     width: 182px;
-    z-index: 3000;
+    z-index: 2100;
   }
   .module-cont {
     position: absolute;
@@ -123,6 +144,85 @@ $width: 1080px;
       .pic-style {
         width: 785px;
         height: 960px;
+      }
+      .icon {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .icon_1 {
+        width: 56px;
+        height: 56px;
+        left: 531px;
+        top: 60px;
+      }
+      .icon_2 {
+        width: 82px;
+        height: 82px;
+        left: 477px;
+        top: 111px;
+      }
+      .icon_3 {
+        width: 68px;
+        height: 68px;
+        left: 622px;
+        top: 194px;
+      }
+      .icon_4 {
+        width: 90px;
+        height: 90px;
+        left: 254px;
+        top: 274px;
+      }
+      .icon_5 {
+        left: 164px;
+        top: 319px;
+      }
+      .icon_6 {
+        left: 286px;
+        top: 388px;
+      }
+      .icon_7 {
+        width: 64px;
+        height: 64px;
+        left: 482px;
+        top: 492px;
+      }
+      .icon_8 {
+        width: 82px;
+        height: 82px;
+        left: 522px;
+        top: 600px;
+      }
+      .icon_9 {
+        width: 168px;
+        height: 168px;
+        left: 348px;
+        top: 633px;
+      }
+      .icon_10 {
+        width: 80px;
+        height: 80px;
+        left: 170px;
+        top: 700px;
+      }
+      .icon_11 {
+        width: 74px;
+        height: 74px;
+        left: 332px;
+        top: 791px;
+      }
+      .icon_12 {
+        left: 189px;
+        top: 798px;
+      }
+      .icon_13 {
+        left: 307px;
+        top: 867px;
       }
     }
     .right-cont {
