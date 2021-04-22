@@ -3,7 +3,8 @@ console.log('env: ', env)
 const isProduction = env === 'production'
 
 module.exports = {
-  publicPath: isProduction ? '/dic-guide-map': '', // 以前必须根路径第一级要跟项目名保持一致github page才会正常显示， 现在发现不需要了！
+  // publicPath: isProduction ? '/dic-guide-map': '', // 以前必须根路径第一级要跟项目名保持一致github page才会正常显示， 现在发现不需要了！
+  publicPath: isProduction ? './': '',
   css: {
     loaderOptions: {
       postcss: {

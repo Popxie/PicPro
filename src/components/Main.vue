@@ -1,8 +1,6 @@
 <template>
   <div class="main-cont" id="main" @dblclick.prevent="dbClick">
     <el-dialog
-      :close-on-press-escape="false"
-      :close-on-click-modal="false"
       :visible.sync="dialogVisible"
       :modal-append-to-body="false"
       :show-close="false"
@@ -45,6 +43,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
+      isFullScreeen: false,
       menuId: -1,
       menuList,
       dialogList,
@@ -62,14 +61,19 @@ export default {
   methods: {
     async dbClick() {
       if (!screenfull.isEnabled) return alert('你当前的浏览器不支持全屏预览！')
+      if (!this.isFullScreeen) {
+        screenfull.exit()
+        this.isFullScreeen = screenfull.isFullscreen
+      } 
       await screenfull.toggle()
+      this.isFullScreeen = screenfull.isFullscreen
     },
     dialogClose() {
       this.menuId = -1
       this.dialogVisible = false
     },
     menuItemClick(menuId) {
-      if (menuId === 14 || menuId > 3) return
+      if (menuId === 14) return
       this.menuId = menuId
       this.dialogList.forEach(item => {
         if (item.id === menuId) {
